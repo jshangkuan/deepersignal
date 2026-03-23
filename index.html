@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deeper Signal — Strategic Company Intelligence Platform</title>
+    <meta name="description" content="What if you could see how Anthropic, NVIDIA, and McKinsey actually make decisions? Strategic intelligence from signals companies can't control.">
+    <meta property="og:title" content="Deeper Signal — Strategic Company Intelligence">
+    <meta property="og:description" content="What if you could see how Anthropic, NVIDIA, and McKinsey actually make decisions?">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://deepersignal.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg: #0a0a0b;
+            --bg-elevated: #141416;
+            --bg-card: #1a1a1f;
+            --ink: #f0f0f3;
+            --ink-secondary: #a1a1aa;
+            --ink-tertiary: #63636e;
+            --accent: #ff6b2b;
+            --accent-hover: #ff8c4c;
+            --accent-glow: rgba(255, 107, 43, 0.12);
+            --border: #27272a;
+            --border-hover: #3f3f46;
+            --radius: 12px;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, system-ui, sans-serif;
+            color: var(--ink);
+            background: var(--bg);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── Nav ── */
+        nav {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 28px 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-img {
+            height: 80px;
+            filter: brightness(0) invert(1);
+            opacity: 0.95;
+        }
+
+        /* ── Hero ── */
+        .hero {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 100px 32px 80px;
+            text-align: center;
+            position: relative;
+        }
+
+        /* Subtle radial glow behind headline */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 700px;
+            height: 400px;
+            background: radial-gradient(ellipse, rgba(255, 107, 43, 0.06) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .hero > * { position: relative; z-index: 1; }
+
+        h1 {
+            font-size: clamp(36px, 4.5vw, 56px);
+            font-weight: 700;
+            line-height: 1.12;
+            letter-spacing: -2px;
+            margin-bottom: 48px;
+            color: var(--ink);
+        }
+
+        /* ── Email Form ── */
+        .email-form {
+            display: flex;
+            gap: 14px;
+            max-width: 540px;
+            margin: 0 auto;
+            justify-content: center;
+        }
+
+        .email-form input {
+            flex: 1;
+            padding: 18px 22px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-hover);
+            border-radius: 12px;
+            font-size: 17px;
+            font-family: inherit;
+            color: var(--ink);
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            min-width: 0;
+        }
+
+        .email-form input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--accent-glow);
+        }
+
+        .email-form input::placeholder {
+            color: var(--ink-tertiary);
+        }
+
+        .btn {
+            padding: 18px 36px;
+            background: #ff6b2b;
+            color: #ffffff;
+            border: none;
+            border-radius: 12px;
+            font-size: 17px;
+            font-weight: 700;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+            letter-spacing: -0.2px;
+        }
+
+        .btn:hover {
+            background: #ff8c4c;
+            box-shadow: 0 0 30px rgba(255, 107, 43, 0.25);
+        }
+
+        .form-subtext {
+            font-size: 20px;
+            color: var(--ink);
+            margin-top: 24px;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        /* ── Scroll indicator ── */
+        .scroll-hint {
+            text-align: center;
+            padding: 40px 0 20px;
+            animation: bounce 2s ease infinite;
+        }
+
+        .scroll-hint svg {
+            opacity: 0.35;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(8px); }
+        }
+
+        /* ── Divider ── */
+        .divider {
+            max-width: 1100px;
+            margin: 0 auto;
+            border-top: 1px solid var(--border);
+        }
+
+        /* ── Pillars ── */
+        .pillars {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 80px 32px;
+        }
+
+        .pillars-label {
+            text-align: center;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--accent);
+            margin-bottom: 48px;
+        }
+
+        .pillar-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .pillar {
+            padding: 32px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .pillar:hover {
+            border-color: var(--border-hover);
+            box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+        }
+
+        .pillar-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--accent-glow);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .pillar h3 {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            letter-spacing: -0.3px;
+            color: var(--ink);
+        }
+
+        .pillar p {
+            font-size: 14px;
+            color: var(--ink-secondary);
+            line-height: 1.7;
+        }
+
+        /* ── Articles ── */
+        .articles {
+            background: var(--bg-elevated);
+            padding: 80px 32px;
+        }
+
+        .articles-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .articles-label {
+            text-align: center;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--accent);
+            margin-bottom: 12px;
+        }
+
+        .articles .section-sub {
+            text-align: center;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 48px;
+            color: var(--ink);
+        }
+
+        .article-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .article-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 28px;
+            text-decoration: none;
+            color: inherit;
+            transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .article-card:hover {
+            border-color: var(--border-hover);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            transform: translateY(-2px);
+        }
+
+        .article-tag {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 14px;
+        }
+
+        .article-card h3 {
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 1.45;
+            letter-spacing: -0.2px;
+            margin-bottom: 12px;
+            color: var(--ink);
+        }
+
+        .article-card p {
+            font-size: 14px;
+            color: var(--ink-secondary);
+            line-height: 1.65;
+            flex: 1;
+        }
+
+        .article-cta {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--accent);
+            margin-top: 18px;
+            transition: color 0.2s;
+        }
+
+        .article-card:hover .article-cta {
+            color: var(--accent-hover);
+        }
+
+        /* ── Bottom CTA ── */
+        .bottom-cta {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 80px 32px;
+            text-align: center;
+        }
+
+        .bottom-cta h2 {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 16px;
+            color: var(--ink);
+        }
+
+        .bottom-cta p {
+            font-size: 16px;
+            color: var(--ink-secondary);
+            margin-bottom: 32px;
+        }
+
+        /* ── Footer ── */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 32px;
+        }
+
+        .footer-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-links a {
+            font-size: 14px;
+            color: var(--ink-tertiary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover { color: var(--ink); }
+
+        .footer-copy {
+            font-size: 13px;
+            color: var(--ink-tertiary);
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            .hero { padding: 64px 20px 48px; }
+
+            h1 { font-size: 28px; letter-spacing: -1px; }
+
+            .email-form {
+                flex-direction: column;
+                max-width: 100%;
+            }
+
+            .btn { width: 100%; }
+
+            .pillar-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .pillars { padding: 48px 20px; }
+
+            .article-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .articles { padding: 48px 20px; }
+
+            .bottom-cta { padding: 48px 20px; }
+
+            .footer-inner {
+                flex-direction: column;
+                gap: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav>
+    <img src="DS%20Full%20Wordmark.png" alt="Deeper Signal" class="logo-img">
+    <div></div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+    <h1>What if you could see how Anthropic, NVIDIA, and McKinsey actually make decisions?</h1>
+
+    <form class="email-form" action="https://formspree.io/f/mojkoklw" method="POST">
+        <input type="email" name="email" placeholder="you@company.com" required>
+        <button type="submit" class="btn">Get Early Access</button>
+    </form>
+    <p class="form-subtext">Join operators and strategists getting weekly intelligence from Deeper Signal.</p>
+</section>
+
+<div class="scroll-hint">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f0f0f3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M7 10l5 5 5-5"/>
+    </svg>
+</div>
+
+<div class="divider"></div>
+
+<!-- Pillars -->
+<section class="pillars">
+    <p class="pillars-label">What We Decode</p>
+    <div class="pillar-grid">
+        <div class="pillar">
+            <div class="pillar-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ff6b2b" stroke-width="2" stroke-linecap="round"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+            </div>
+            <h3>Hiring Intelligence</h3>
+            <p>What they're building — decoded from what they're hiring for. We classify roles by function, seniority, and division, then extract strategic themes and culture signals from the language itself.</p>
+        </div>
+        <div class="pillar">
+            <div class="pillar-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ff6b2b" stroke-width="2" stroke-linecap="round"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+            </div>
+            <h3>Executive Signal Analysis</h3>
+            <p>What leaders say vs. what the hiring data shows. We cross-reference public executive statements against actual hiring patterns to surface the gap between narrative and reality.</p>
+        </div>
+        <div class="pillar">
+            <div class="pillar-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ff6b2b" stroke-width="2" stroke-linecap="round"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            </div>
+            <h3>Strategic Gap Detection</h3>
+            <p>Where the opportunities hide. We identify what companies lack, where they're scrambling, and which roles reveal emerging bets — before the market catches on.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Articles -->
+<section class="articles">
+    <div class="articles-inner">
+        <p class="articles-label">Featured Intelligence</p>
+        <p class="section-sub">See the platform in action</p>
+
+        <div class="article-grid">
+            <div class="article-card">
+                <div class="article-tag">Hiring Intelligence</div>
+                <h3>What 191 Hiring Managers at Anthropic, Meta, NVIDIA, Goldman & McKinsey Actually Score You On</h3>
+                <p>I analyzed 2,100 scoring criteria across 16 companies. Only 4 things actually matter — and none of them are what's in the job posting.</p>
+                <div class="article-cta">Coming soon</div>
+            </div>
+
+            <div class="article-card">
+                <div class="article-tag">Cross-Signal Analysis</div>
+                <h3>I Compared 1,500 Roles at McKinsey, BCG & Bain Against Anthropic, OpenAI & NVIDIA</h3>
+                <p>The consulting-to-AI exit path hasn't narrowed. It's bifurcated. The same job titles now require completely different skills.</p>
+                <div class="article-cta">Coming soon</div>
+            </div>
+
+            <div class="article-card">
+                <div class="article-tag">Industry Deep Dive</div>
+                <h3>Anthropic's AP Team Manages Billion-Dollar Compute Contracts. Here's Where Finance Is Heading.</h3>
+                <p>AI companies aren't automating the back office. They're reinventing it from scratch — and the roles look nothing like their traditional counterparts.</p>
+                <div class="article-cta">Coming soon</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- Bottom CTA -->
+<section class="bottom-cta">
+    <h2>Every company has a public narrative. We decode the private one.</h2>
+    <p>Get weekly intelligence on how the world's most competitive companies actually operate.</p>
+
+    <form class="email-form" action="https://formspree.io/f/mojkoklw" method="POST">
+        <input type="email" name="email" placeholder="you@company.com" required>
+        <button type="submit" class="btn">Get Early Access</button>
+    </form>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-inner">
+        <span class="footer-copy">&copy; 2026 Deeper Signal</span>
+        <div class="footer-links">
+            <a href="https://www.linkedin.com/in/jasonshangkuan/" target="_blank">LinkedIn</a>
+            <a href="https://x.com/thedeepersignal" target="_blank">X</a>
+            <a href="https://www.instagram.com/thedeepersignal/" target="_blank">Instagram</a>
+            <a href="https://www.youtube.com/@thedeepersignal" target="_blank">YouTube</a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
