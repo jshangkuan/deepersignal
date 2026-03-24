@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Deeper Signal — Strategic Company Intelligence Platform</title>
     <meta name="description" content="What if you could see how Anthropic, NVIDIA, and McKinsey actually make decisions? Strategic intelligence from signals companies can't control.">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8YCT4ZL12T"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-8YCT4ZL12T');
+    </script>
     <meta property="og:title" content="Deeper Signal — Strategic Company Intelligence">
     <meta property="og:description" content="What if you could see how Anthropic, NVIDIA, and McKinsey actually make decisions?">
     <meta property="og:type" content="website">
@@ -526,5 +534,15 @@
     </div>
 </footer>
 
+<script>
+document.querySelectorAll('.email-form').forEach(function(form) {
+    form.addEventListener('submit', function() {
+        gtag('event', 'email_signup', {
+            event_category: 'conversion',
+            event_label: 'early_access'
+        });
+    });
+});
+</script>
 </body>
 </html>
