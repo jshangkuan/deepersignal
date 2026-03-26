@@ -270,9 +270,12 @@
         }
 
         .article-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            max-width: 720px;
+            margin: 0 auto;
         }
 
         .article-card {
@@ -285,6 +288,8 @@
             transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
             display: flex;
             flex-direction: column;
+            position: relative;
+            width: 100%;
         }
 
         .article-card:hover {
@@ -299,7 +304,14 @@
             color: var(--accent);
             text-transform: uppercase;
             letter-spacing: 0.08em;
-            margin-bottom: 14px;
+            background: rgba(255, 107, 43, 0.1);
+            border: 1px solid rgba(255, 107, 43, 0.25);
+            border-radius: 999px;
+            padding: 4px 12px;
+            align-self: flex-end;
+            order: 10;
+            margin-top: 18px;
+            margin-bottom: 0;
         }
 
         .article-card h3 {
@@ -407,7 +419,6 @@
             .pillars { padding: 48px 20px; }
 
             .article-grid {
-                grid-template-columns: 1fr;
                 gap: 16px;
             }
 
@@ -457,22 +468,22 @@
             <div class="pillar-icon">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ff6b2b" stroke-width="2" stroke-linecap="round"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
             </div>
-            <h3>Hiring Intelligence</h3>
-            <p>What they're building — decoded from what they're hiring for. We classify roles by function, seniority, and division, then extract strategic themes and culture signals from the language itself.</p>
+            <h3>Investment Signals</h3>
+            <p>Where the money is really going. We track headcount surges, new team formations, and role-level spending shifts to reveal strategic bets before they hit the press release.</p>
         </div>
         <div class="pillar">
             <div class="pillar-icon">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ff6b2b" stroke-width="2" stroke-linecap="round"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
             </div>
-            <h3>Executive Signal Analysis</h3>
-            <p>What leaders say vs. what the hiring data shows. We cross-reference public executive statements against actual hiring patterns to surface the gap between narrative and reality.</p>
+            <h3>Execution Intelligence</h3>
+            <p>Whether companies are actually building what they claim. We decode hiring patterns, org structure, and resource allocation to see if strategy is translating into real team builds — or stalling.</p>
         </div>
         <div class="pillar">
             <div class="pillar-icon">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ff6b2b" stroke-width="2" stroke-linecap="round"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
             </div>
-            <h3>Strategic Gap Detection</h3>
-            <p>Where the opportunities hide. We identify what companies lack, where they're scrambling, and which roles reveal emerging bets — before the market catches on.</p>
+            <h3>Value Realization</h3>
+            <p>Whether the investment is paying off. We measure if hiring momentum and org bets are translating into shipped capability, market position, and competitive advantage — or just headcount.</p>
         </div>
     </div>
 </section>
@@ -480,26 +491,24 @@
 <!-- Articles -->
 <section class="articles">
     <div class="articles-inner">
-        <p class="articles-label">Featured Intelligence</p>
-        <p class="section-sub">See the platform in action</p>
-
+        <p class="articles-label">See the Platform in Action</p>
         <div class="article-grid">
-            <div class="article-card">
-                <div class="article-tag">Hiring Intelligence</div>
-                <h3>What 191 Hiring Managers at Anthropic, Meta, NVIDIA, Goldman & McKinsey Actually Score You On</h3>
+            <a class="article-card" href="https://www.linkedin.com/pulse/i-analyzed-14500-job-postings-from-openai-nvidia-what-jason-shangkuan-imthc/?trackingId=%2BQpzYGlJSXOJeetQHJU7dg%3D%3D" target="_blank">
+                <div class="article-tag">Investment Signals</div>
+                <h3>I Analyzed 14,500 Job Postings From OpenAI to NVIDIA. What Companies Really Believe About Success Isn't What They Say.</h3>
                 <p>I analyzed 2,100 scoring criteria across 16 companies. Only 4 things actually matter — and none of them are what's in the job posting.</p>
-                <div class="article-cta">Coming soon</div>
-            </div>
+                <div class="article-cta">Read on LinkedIn &rarr;</div>
+            </a>
 
             <div class="article-card">
-                <div class="article-tag">Cross-Signal Analysis</div>
+                <div class="article-tag">Execution Intelligence</div>
                 <h3>I Compared 1,500 Roles at McKinsey, BCG & Bain Against Anthropic, OpenAI & NVIDIA</h3>
                 <p>The consulting-to-AI exit path hasn't narrowed. It's bifurcated. The same job titles now require completely different skills.</p>
                 <div class="article-cta">Coming soon</div>
             </div>
 
             <div class="article-card">
-                <div class="article-tag">Industry Deep Dive</div>
+                <div class="article-tag">Value Realization</div>
                 <h3>Anthropic's AP Team Manages Billion-Dollar Compute Contracts. Here's Where Finance Is Heading.</h3>
                 <p>AI companies aren't automating the back office. They're reinventing it from scratch — and the roles look nothing like their traditional counterparts.</p>
                 <div class="article-cta">Coming soon</div>
